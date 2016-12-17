@@ -14,7 +14,14 @@ app.controller('misAlertas', function($scope, $http) {
       console.log(len);
       $scope.cantidad=len;      
   });
-});
+})
+
+app.controller('capital', function($scope, $http) {
+  $http.get("../php/capital.php")
+  .then(function(response) {
+      $scope.categoria = response.data;      
+  });
+})
 
 
 
