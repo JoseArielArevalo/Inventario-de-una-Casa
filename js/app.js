@@ -23,5 +23,14 @@ app.controller('capital', function($scope, $http) {
   });
 })
 
+app.controller('productosVencidos', function($scope, $http) {
+  $http.get("../php/productos_vencidos.php")
+  .then(function(response) {
+      $scope.categoria = response.data;
+      var tamano = $scope.categoria.length;
+      console.log(tamano);
+      $scope.cantidad=tamano;      
+  });
+});
 
 
