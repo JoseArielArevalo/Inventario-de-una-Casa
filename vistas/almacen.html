@@ -7,19 +7,7 @@
 
 <head>
 <div ng-controller="misAlertas">
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="portada.html">Inicio</a></li>
-      <li><a href="registrar.html">Registrar Articulo</a></li>
-      <li><a href="categorias.html">Categorias</a></li>
-      <li><a href="#">Almacen</a></li>
-      <li role="" class=""><a href="reportes.html">Reportes<span class="badge"></span></a></li>
-      <li class="active"><a href="alertas.html">Alertas<span class="badge">{{cantidad}}</span></a></li>
-      <li><a href="#">Ayuda</a></li>
-    </ul>
-  </div>
-</nav>
+  <div ng-include src=" 'menu.html' "></div>
 </div>
 </head>
 
@@ -52,7 +40,7 @@
  
   <div ng-controller="capital">
   <div ng-repeat="articulo in categoria">
-  <h3>Capital Total : {{articulo}} Bs.</h3>
+  <h4>Capital Total : {{articulo}} Bs.</h4>
   </div>
   </div>
 
