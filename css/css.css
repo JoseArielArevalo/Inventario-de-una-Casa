@@ -1,8 +1,6 @@
-
 body, html {
-  background-size: 100%;
-  background: url('imagenes/fondo1.jpg');	
-  background-color: #E1F9D5;
+  background-size: 100%;	
+  background-color: #b0c1bf;
 }
 
 .card-container.card {

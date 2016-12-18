@@ -1,29 +1,15 @@
 <!doctype html>
-<html ng-app="alertas" >     
+<html ng-app="misCategorias">     
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css"> 
     <script src="../lib/angular-1.5.9/angular.min.js" > </script>
     <script src="../lib/angular-1.5.9/angular-route.min.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
     <title> Inventario </title>
     <div ng-include src=" 'menu.html' "></div>
   </head>
   <body>
-  
    <div ng-include src=" 'bienvenida.html' "> </div>
-
   </body>
-  <script> 
-  var app = angular.module('alertas', []);
-  app.controller('misAlertas', function($scope, $http) {
-       $http.get("../php/productos_en_alerta.php")
-       .then(function(response) {
-          $scope.categoria = response.data;
-          var len = $scope.categoria.length;
-          console.log(len);
-          $scope.cantidad=len;       
-          $scope.precio=0;
-         });
-      });
-  </script>
 </html>
