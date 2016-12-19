@@ -1,41 +1,37 @@
-<?php 
-	$nombre=$_POST['nombre'];
-	$precio=$_POST['precio'];
-	$fecha_vencimiento=$_POST['vencimiento'];
-	$tipo=$_POST['tipo'];
-	$categoria=$_POST['categoria'];
-	$profundidad=$_POST['profundidad'];
-	$ubicacion=$_POST['ubicacion'];
-	$fecha_compra= "";
+	<?php 
+	$objDatos = json_decode(file_get_contents("php://input"));
+
+
+	$nombre=$objDatos->nombre;
+	$precio=$objDatos->precio;
+	$fecha_compra=$objDatos->fecha_compra;
+	$vencimiento=$objDatos->vencimiento;
+	$tipo=$objDatos->tipo;
+	$categoria=$objDatos->categoria;
+	$profundidad=$objDatos->profundidad;
+	$estado=$objDatos->estado;
+	$ubicacion=$objDatos->ubicacion;
 	include "conexion.php";
 
-	if ($nombre && $precio && $fecha_vencimiento && $tipo && $categoria && $profundidad && $ubicacion) {
+	if ($nombre && $precio && $vencimiento && $tipo && $categoria && $profundidad && $ubicacion && $fecha_compra && $estado) {
 		
 		$insertar=mysql_query("insert into productos values(null,
 					'".$nombre."',
 					'".$precio."',
-					'".$fecha_vencimiento."',
+					'".$vencimiento."',
 					'".$tipo."',
 					'".$categoria."',
 					'".$profundidad."',
 					'".$ubicacion."',
-					'".$fecha_compra."')",$conexion);
+					'".$fecha_compra."',
+					'".$estado."')",$conexion);
 		if ($insertar) {
+					echo "registrado";
+		}else{
 					echo "
 					<html>
 						<head>
-							<meta http-equiv='REFRESH' content='0 ; url=/'>
-							<script>
-								alert('Gracias por registrar');
-							</script>
-						</head>
-					</html>
-					";
-				}else{
-					echo "
-					<html>
-						<head>
-							<meta http-equiv='REFRESH' content='0 ; url=../'>
+							<meta http-equiv='REFRESH' content='0 ; url=../registrar.html'>
 
 							<script>
 								alert('Ha fallado su registro');
@@ -43,7 +39,7 @@
 						</head>
 					</html>
 					";
-				}
+		}
 	}
 
  ?>
