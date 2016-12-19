@@ -29,7 +29,6 @@ function devolverArraySQL($consulta){
 
     $datos = array(); //creamos un array
 
-    //guardamos en un array todos los datos de la consulta
     $i=0;
     $total=0;
     while($row = mysqli_fetch_array($resultado))

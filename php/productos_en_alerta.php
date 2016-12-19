@@ -1,18 +1,14 @@
 <?php
 
-$hora= date ("h:i:s");
-
 $fecha= date ("j-n-Y");
-//echo $hora;
-//echo $fecha;
 
 $consulta = "SELECT nombre,precio,tipo,fecha_vencimiento FROM productos";
-
 
 function dias_transcurridos($fecha_i,$fecha_f)
 {
   $dias = (strtotime($fecha_i)-strtotime($fecha_f))/86400;
-  $dias   = abs($dias); $dias = floor($dias);   
+  $dias   = abs($dias); 
+  $dias = floor($dias);   
   return $dias;
 }
 
@@ -37,29 +33,23 @@ function conectarDB(){
 function devolverArraySQL($consulta){
     
     $conexion = conectarDB();
-
     $fecha= date ("j-n-Y");
-
 
     if(!$resultado = mysqli_query($conexion, $consulta)) die(); 
 
-    $datos = array(); //creamos un array
-
-    //guardamos en un array todos los datos de la consulta
+    $datos = array(); 
     $i=0;
 
    while($row=$resultado->fetch_assoc()){
 
-       if (dias_transcurridos($row['fecha_vencimiento'] ,$fecha)==1 || 
-        dias_transcurridos($row['fecha_vencimiento'] ,$fecha)==2) {
+       if (dias_transcurridos($row['fecha_vencimiento'] ,$fecha)>=1 && 
+        dias_transcurridos($row['fecha_vencimiento'] ,$fecha)<=3) {
            $datos[$i] = $row;
            $i++;        
        }
 
    }
-    
     mysqli_close($conexion);
-
     return $datos; 
 }
 
