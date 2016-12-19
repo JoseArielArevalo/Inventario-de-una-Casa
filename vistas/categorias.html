@@ -14,10 +14,9 @@
 
 <body>
 <div class="container">
-<div class="col-md-10">  
 <h2>Categoria de Articulos</h2>
 <div ng-controller="misArticulos"> 
-  <div class="form-group">
+  <div class="form-group col-md-3">
   <label>Categorias:</label> 
         <select class="form-control" ng-model="categorias" name="selecione">
            <option ng-model="" value="">ninguno</option>
@@ -27,7 +26,7 @@
            <option ng-model="recamara" value="recamara" >recamara</option>
         </select>
   </div><br/><br/>
-  <div class="form-group">
+  <div class="form-group" align="right">
   <label> Buscar : </label>
   <input type="search" ng-model="busqueda">
   </div>       
@@ -38,6 +37,7 @@
         <th>Nombre</th>
         <th>Categoria</th>
         <th>Precio</th>
+        <th>Nivel de Profundidad</th>
         <th>Fecha de Compra</th>
         <th>Edit</th>
       </tr>
@@ -50,6 +50,8 @@
         <td> {{articulo.categoria}} </td>
   
         <td> {{articulo.precio | currency: ' Bs. '}} </td>
+
+        <td> {{articulo.profundidad}} </td>
     
         <td> {{articulo.fecha_compra | date: 'dd-MM-yyyy'}} </td>
         <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
@@ -61,7 +63,6 @@
   <h1>{{cantidad}}</h1>
   </div>
 
-</div>
 </div>
 </div>
 </body>
