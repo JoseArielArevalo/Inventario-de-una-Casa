@@ -1,6 +1,6 @@
 <?php
 
-$consulta = "SELECT nombre,precio,categoria,profundidad,fecha_compra FROM productos";
+$consulta = "SELECT nombre,precio,categoria,estado,profundidad,fecha_compra FROM productos";
 
 function conectarDB(){
 
