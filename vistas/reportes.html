@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html  ng-app="misCategorias">
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">      
+<script src="../lib/angular-1.5.9/angular.min.js"></script>
+<script src="../lib/angular-1.5.9/angular-route.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+<head>
+<div ng-include src=" 'menu.html' "> </div>
+</head>
+
+<body>
+<div class="container">
+<div class="col-md-12">  
+<h2>Productos Vencidos</h2>
+<div ng-controller="productosVencidos"> 
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Fecha de Vencimiento</th>
+      </tr>
+    </thead>
+     
+    <tbody ng-repeat="articulo in categoria | orderBy:'-fecha_vencimiento'">
+      <tr>
+        <td> {{articulo.nombre}} </td>
+         
+        <td> {{articulo.tipo}} </td>
+  
+        <td> {{articulo.precio | currency: ' Bs. '}} </td>
+    
+        <td> {{articulo.fecha_vencimiento | date: 'dd-MM-yyyy'}} </td>
+      </tr>
+    </tbody>
+  </table> 
+
+  <h4>Cantidad de productos: {{cantidad+0}}</h4>      
+</div>
+</div>
+</div>
+</body>
+</html>
