@@ -1,1 +1,0 @@
-# Inventario-de-una-Casa
