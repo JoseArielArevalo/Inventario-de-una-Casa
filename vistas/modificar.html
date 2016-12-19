@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">			
 <script src="../lib/angular-1.5.9/angular.min.js"></script>
 <script src="../lib/angular-1.5.9/angular-route.js"></script>
-<script src="../js/appARG.js" ></script>
-<!--script src="../js/appARG.js"></script-->
-
+<script src="../js/app.js"></script>
+<script src="../js/jquery-1.11.2.min.js"></script>
 <head>
   <style>
     .ng-invalid.ng-dirty{
@@ -16,25 +16,21 @@
     }
   </style>
 
-
 </head>
-<body ng-app="app">
+<body ng-app="misCategorias">
   <div>
     <div ng-include src="'menu.html'"></div>   
   </div>
-   
-  <!--div ng-controller="misAlertas">
-    <div ng-include src=" 'menu.html' "></div>
-  </div-->
 
   <div class="container col-md-offset-3 col-md-6" ng-controller="appCtrl as vm">
   <center>
     <h1>Formulario de registro</h1>
   </center>
   <hr>
-  <form id="formulario" class="" ng-submit="vm.enviar()">
+  <form id="formulario" class="" ng-submit="vm.modificar()" name="formulario">
+    
     <div class="form-group">
-      <label for="nombre" class="col-lg-4">Nombre del producto:</label>
+      <label for="nombre" class="col-lg-2">Nombre del producto:</label>
       <div class="col-lg-10">
         <input class="form-control" id="nombre" type="text" name="nombre"   ng-model="vm.fdatos.nombre" ng-minlength="3" ng-pattern="/^[a-zA-Z]+\d*[a-zA-Z]*$/" required>
         <br>
@@ -42,7 +38,7 @@
       
     </div>
     <div class="form-group">
-      <label for="precio" class="col-lg-4 control-label">Precio:</label>
+      <label for="precio" class="col-lg-2 control-label">Precio:</label>
       <div class="col-lg-10">
         <input  class="form-control" id="precio" type="text" name="precio" ng-model="vm.fdatos.precio" ng-pattern="/^(\d+\.\d+)$/" required>
         <br>
@@ -50,7 +46,7 @@
     </div>
 
     <div class="form-group">
-      <label for="fecha_compra" class="col-lg-4 control-label">Fecha de compra:</label>
+      <label for="fecha_compra" class="col-lg-2 control-label">Fecha de compra:</label>
       <div class="col-lg-10">
         <input class="form-control" id="fecha_compra" type="date" name="fecha_compra" ng-model="vm.fdatos.fecha_compra" required>
         <br>
@@ -59,7 +55,7 @@
     </div>
 
     <div class="form-group">
-      <label for="vencimiento" class="col-lg-4 control-label">Vencimiento:</label>
+      <label for="vencimiento" class="col-lg-2 control-label">Vencimiento:</label>
       <div class="col-lg-10">
         <input class="form-control" id="vencimiento" type="date" name="vencimiento" ng-model="vm.fdatos.vencimiento" required>
         <br>
@@ -67,7 +63,7 @@
       
     </div>
     <div class="form-group">
-      <label for="tipo" class="col-lg-4 control-label">Tipo:</label>
+      <label for="tipo" class="col-lg-2 control-label">Tipo:</label>
       <div class="col-lg-10">
         <input class="form-control" id="tipo" type="text" name="tipo" ng-model="vm.fdatos.tipo" required>
         <br>
@@ -75,7 +71,7 @@
       
     </div>
     <div class="form-group">
-      <label for="categoria" class="col-lg-4 control-label">Categoria:</label>
+      <label for="categoria" class="col-lg-2 control-label">Categoria:</label>
       <div class="col-lg-10">
         <input class="form-control" id="categoria" type="text" name="categoria" ng-model="vm.fdatos.categoria" ng-pattern="/^[a-zA-Z]+$/" required>
         <br>
@@ -83,7 +79,7 @@
       
     </div>
     <div class="form-group">
-      <label for="profundidad" class="col-lg-4 control-label">Profundidad:</label>
+      <label for="profundidad" class="col-lg-2 control-label">Profundidad:</label>
       <div class="col-lg-10">
         <input class="form-control" id="profundidad" type="number" name="profundidad" ng-model="vm.fdatos.profundidad" required>
         <br>
@@ -99,7 +95,7 @@
       </div>
     </div-->
     <div class="form-group">
-      <label for="estado" class="col-lg-4 control-label">Estado del producto:</label>
+      <label for="estado" class="col-lg-2 control-label">Estado del producto:</label>
       <div class="col-lg-10">
         <select name="estado" id="estado" class="form-control" ng-model="vm.fdatos.estado" required>
           <option value="nuevo">nuevo</option>
@@ -111,7 +107,7 @@
     </div>
 
     <div class="form-group">
-      <label for="ubicacion" class="col-lg-4 control-label">Ubicacion:</label>
+      <label for="ubicacion" class="col-lg-2 control-label">Ubicacion:</label>
       <div class="col-lg-10">
         <input class="form-control" id="ubicacion" type="text" name="ubicacion" ng-model="vm.fdatos.ubicacion" ng-minlength="3" ng-pattern="/^(((?:[a-z][a-z]+))\/*?)*$/" required>
         <br>
@@ -132,6 +128,14 @@
     </div>
     
   </form>
+
 </div>
+
+
+<script>
+
+
+</script>
+
 </body>
 </html>
