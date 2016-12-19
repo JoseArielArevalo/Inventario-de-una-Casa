@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="misCategorias">
-<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">      
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">       
 <script src="../lib/angular-1.5.9/angular.min.js"></script>
 <script src="../lib/angular-1.5.9/angular-route.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
@@ -14,36 +15,71 @@
 <body>
 <div class="container">
 <div class="col-md-12">  
-<h1>Productos</h1>
 <div ng-controller="misArticulos"> 
-<table class="table table-bordered">
+
+<div ng-controller="capital" class="form-group">
+  <h4 align="right">Fecha : {{dia}}/{{mes}}/{{anio}}</h4>
+  <h3>Informe General:</h3><br/>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Categoria</th>
-        <th>Precio</th>
-        <th>Fecha de Compra</th>
+        <th>Capital total</th>
+        <th>Cantidad total de Productos</th>
+        <th>Cantidad de productos vencidos</th>
+        <th>Cantidad de productos en alerta</th>
       </tr>
     </thead>
-    <tbody ng-repeat="articulo in categoria | orderBy: 'nombre'">
-      <tr>
-        <td> {{articulo.nombre}} </td>
-         
-        <td> {{articulo.categoria}} </td>
-  
-        <td> {{articulo.precio | currency: ' Bs. '}} </td>
-    
-        <td> {{articulo.fecha_compra | date: 'dd-MM-yyyy'}} </td>
-      </tr>
-    </tbody>
+    <tbody>
+    <tr>
+      <th>
+        <div ng-repeat="articulo in categoria">
+        <h3> Bs. {{articulo}}</h4>
+        </div>
+      </th>
+        <th><div><h3>{{total+0}}</h3></div></th>
+      <th>
+        <div ng-controller="productosVencidos">
+        <h3>{{cantidad+0}}</h3>
+        </div>
+      </th> 
+      <th>
+        <div ng-controller="misAlertas">
+        <h3>{{cantidad+0}}</h3>
+        </div>
+      </th> 
+    </tr>
+  </tbody>
   </table>
- 
-  <div ng-controller="capital">
-  <div ng-repeat="articulo in categoria">
-  <h4>Capital Total : {{articulo}} Bs.</h4>
-  </div>
-  </div>
+</div>
 
+<div ng-controller="totalCategorias" class="form-group">
+  <h4>Total por Categorias:</h4><br/>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th><h4>{{categoria1}}</h4></th>
+      <th><h4>{{sala | currency : 'Bs. '}}</h4></th>
+    </tr>
+    <tr>
+      <th><h4>{{categoria2}}</h4></th>
+      <th><h4>{{recamara | currency : 'Bs. '}}</h4></th>
+    </tr>
+    <tr>
+      <th><h4>{{categoria3}}</h4></th>
+      <th><h4>{{cocina | currency : 'Bs. '}}</h4></th>
+    </tr>
+    <tr>
+      <th><h4>{{categoria4}}</h4></th>
+      <th><h4>{{bano | currency : 'Bs. '}}</h4></th>
+    </tr>
+  </tbody>
+  </table>
 </div>
 </div>
 </div>
