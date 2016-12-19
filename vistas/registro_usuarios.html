@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+
+    <style>
+        h1   {color: blue;}
+
+        div {
+            height: 75px;
+            width: 80%;
+        }
+
+        input.ng-invalid, textarea.ng-invalid{
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+         <h1>Registro de Usuarios</h1>
+         <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+         <script src="../lib/angular-1.5.9/angular.min.js"></script>
+         <script src="../lib/angular-1.5.9/angular-route.js"></script>
+         <div ng-app="myApp" ng-controller="cntrl">
+             <form name="form">
+                 <div class="container" >
+                     <label for="ci">Carnet de Identidad:</label>
+                     <input type="number" id="ci" ng-model="id" name="id" ng-disabled="obj.idisable" class="form-control" required>
+
+                     <label for="nombre">Nombre:</label>
+                     <input type="text" id="nombre" ng-model="name" name="name" class="form-control" required>
+
+                     <label for="apellido">Apellido:</label>
+                     <input type="text" id="apellido" ng-model="apellido" name="apellido" class="form-control" required>
+
+                     <label for="fechan">Fecha Nacimiento:</label>
+                     <input type="date" id="fechan" ng-model="fecha" name="fecha" class="form-control" required>
+
+                     <label for="email">Email:</label>
+                     <input type="email" id="email" ng-model="email" name="email" class="form-control" required><br>
+                     <button type="submit" ng-click="insertdata()" value="{{btnName}}" ng-disabled="form.$invalid" class="btn btn-primary">Registrar</button>
+                 {{msg}}
+                 </div>
+             </form>
+         </div>
+         <script>
+             var app=angular.module('myApp',[]);
+             app.controller('cntrl', function($scope,$http){
+                 $scope.obj={'idisable':false};
+                 $scope.btnName="registrar";
+
+                 $scope.insertdata=function(){
+                     $http.post("../php/insertar_usuario.php",{'id':$scope.id, 'name':$scope.name, 'apellido':$scope.apellido, 'fecha':$scope.fecha, 'email':$scope.email, 'btnName':$scope.btnName})
+                         .success(function(){
+                             $scope.msg="Data Inserted";
+                         })
+                 }
+             });
+         </script>
+</body>
+</html>

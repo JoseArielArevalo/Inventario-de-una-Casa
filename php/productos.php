@@ -1,11 +1,5 @@
 <?php
-
-<<<<<<< HEAD
-$consulta = "SELECT id,nombre,precio,categoria,fecha_compra FROM productos";
-=======
-$consulta = "SELECT nombre,precio,categoria,profundidad,fecha_compra FROM productos";
->>>>>>> 746ad20ef5566515a3eec50fed25326aa328d092
-
+$consulta = "SELECT id,nombre,precio,categoria,estado,profundidad,fecha_compra FROM productos";
 function conectarDB(){
 
         $servidor = "localhost";

@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-<h2>Categoria de Articulos</h2>
+<h2>Categoria de Productos</h2>
 <div ng-controller="misArticulos"> 
   <div class="form-group col-md-3">
   <label>Categorias:</label> 
@@ -37,9 +37,11 @@
         <th>Nombre</th>
         <th>Categoria</th>
         <th>Precio</th>
+        <th>Estado</th>
         <th>Nivel de Profundidad</th>
         <th>Fecha de Compra</th>
         <th>Edit</th>
+        <th>Ubicacion</th>
       </tr>
     </thead>
     <tbody ng-repeat="articulo in categoria | filter: categorias | filter: busqueda">
@@ -51,10 +53,13 @@
   
         <td> {{articulo.precio | currency: ' Bs. '}} </td>
 
+        <td> {{articulo.estado}}</td>
+
         <td> {{articulo.profundidad}} </td>
     
         <td> {{articulo.fecha_compra | date: 'dd-MM-yyyy'}} </td>
         <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
+        <td> <button type="submit">Obtener</button></td>
       </tr>
     </tbody>
   </table>
