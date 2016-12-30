@@ -41,7 +41,28 @@ app.controller('productosVencidos', function($scope, $http) {
   });
 })
 
-<<<<<<< HEAD
+app.controller('totalCategorias', function($scope, $http) {
+  $http.get("../php/capital/total.php")
+  .then(function(response) {
+      $scope.categoria = response.data;
+      var tamano = $scope.categoria.length;
+      console.log(tamano);
+      var c = new Array ("sala","recamara","cocina","baño");
+      $scope.categoria1 = c[0];
+      $scope.categoria2 = c[1];
+      $scope.categoria3 = c[2];
+      $scope.categoria4 = c[3];
+
+      var categorias = new Array();
+      categorias=$scope.categoria;
+      $scope.sala = categorias[0];
+      $scope.recamara = categorias[1];
+      $scope.cocina = categorias[2];
+      $scope.bano = categorias[3];
+      $scope.cantidad=tamano;      
+  });
+})
+
 app.controller('appCtrl', function($scope, $http) {
   var vm = this;
   vm.fdatos = {};
@@ -71,8 +92,8 @@ app.controller('appCtrl', function($scope, $http) {
       $('#profundidad').val(name.profundidad);
       $('#estado').val(name.estado);
       $('#ubicacion').val(name.ubicacion);
-      //});
-  });
+      });
+  })
   //console.log(vm);
   vm.modificar = function(){
           vm.fdatos.nombre=$("#nombre").val();
@@ -99,31 +120,7 @@ app.controller('appCtrl', function($scope, $http) {
               console.log(a);
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
             });  
-        }
-  
-=======
-app.controller('totalCategorias', function($scope, $http) {
-  $http.get("../php/capital/total.php")
-  .then(function(response) {
-      $scope.categoria = response.data;
-      var tamano = $scope.categoria.length;
-      console.log(tamano);
-      var c = new Array ("sala","recamara","cocina","baño");
-      $scope.categoria1 = c[0];
-      $scope.categoria2 = c[1];
-      $scope.categoria3 = c[2];
-      $scope.categoria4 = c[3];
-
-      var categorias = new Array();
-      categorias=$scope.categoria;
-      $scope.sala = categorias[0];
-      $scope.recamara = categorias[1];
-      $scope.cocina = categorias[2];
-      $scope.bano = categorias[3];
-      $scope.cantidad=tamano;      
-  });
->>>>>>> 746ad20ef5566515a3eec50fed25326aa328d092
-});
+        };
 
 
 
