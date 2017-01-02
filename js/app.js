@@ -63,6 +63,7 @@ app.controller('totalCategorias', function($scope, $http) {
   });
 })
 
+
 app.controller('delCtrl',function($scope, $http){
   var vm = this;
   var urlQuery=window.location.search;
@@ -102,6 +103,7 @@ app.controller('delCtrl',function($scope, $http){
   }
 })
 
+
 app.controller('appCtrl', function($scope, $http) {
   var vm = this;
 
@@ -135,7 +137,12 @@ app.controller('appCtrl', function($scope, $http) {
       $('#ubicacion').val(name.ubicacion);
       });
 
+
     //console.log(vm);
+
+  })
+  //console.log(vm);
+
   vm.modificar = function(){
           console.log($("#nombre").val());
           vm.fdatos.nombre=$("#nombre").val();
@@ -165,5 +172,13 @@ app.controller('appCtrl', function($scope, $http) {
               console.log(a);
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
             });  
+
   }
 });
+
+        };
+
+
+
+
+
