@@ -140,9 +140,6 @@ app.controller('appCtrl', function($scope, $http) {
 
     //console.log(vm);
 
-  })
-  //console.log(vm);
-
   vm.modificar = function(){
           console.log($("#nombre").val());
           vm.fdatos.nombre=$("#nombre").val();
@@ -175,8 +172,6 @@ app.controller('appCtrl', function($scope, $http) {
 
   }
 });
-
-        };
 
 
 
