@@ -11,7 +11,10 @@ $total=mysql_num_rows($resultado);
 if($total>0){
 header("Location: ../vistas/portada.html");
 }else{	
-header("Location: ../index.html");
+ echo "<SCRIPT type='text/javascript'> 
+        alert('usuario o password incorrecto');
+        window.location.replace('../index.html');
+       </SCRIPT>";
 }
 
 ?>

@@ -13,7 +13,11 @@
 <div class="container">
 <div class="col-md-12">  
 <div ng-controller="misAlertas"> 
-<h2>Productos a Vencer en menos de 3 dias</h2>
+<h3>Productos a Vencer</h3> 
+<h3>En menos de 5 dias</h3>
+<div ng-controller="capital">
+<h4 align="right">Fecha : {{dia}}/{{mes}}/{{anio}}</h4>
+</div>
 <label style="color: red">Cantidad : {{cantidad+0}}</label>
 <table class="table table-bordered">
     <thead>
