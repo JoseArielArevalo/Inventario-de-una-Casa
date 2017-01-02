@@ -30,7 +30,7 @@
   <label> Buscar : </label>
   <input type="search" ng-model="busqueda">
   </div>       
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>id</th>
@@ -40,8 +40,9 @@
         <th>Estado</th>
         <th>Nivel de Profundidad</th>
         <th>Fecha de Compra</th>
-        <th>Edit</th>
         <th>Ubicacion</th>
+        <th>Edit</th>
+        <th>Del</th>
       </tr>
     </thead>
     <tbody ng-repeat="articulo in categoria | filter: categorias | filter: busqueda">
@@ -58,8 +59,9 @@
         <td> {{articulo.profundidad}} </td>
     
         <td> {{articulo.fecha_compra | date: 'dd-MM-yyyy'}} </td>
-        <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
         <td> <button type="submit">Obtener</button></td>
+        <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
+        <td> <a id="elim" href="eliminar.html?id={{articulo.id}} nombre={{articulo.nombre}}" class="btn btn-danger btn-sm">Eliminar</a></td>
       </tr>
     </tbody>
   </table>
@@ -67,6 +69,7 @@
   <div>
   <h1>{{cantidad}}</h1>
   </div>
+
 
 </div>
 </div>

@@ -19,6 +19,7 @@ app.controller('appCtrl', ['$http', controladorPrincipal]);
         
         // declaro la función enviar
         vm.enviar = function(){
+          console.log(vm.fdatos);
           $http.post("../php/registrar.php", vm.fdatos)
             .success(function(res){
               var a = res.substring(1);
@@ -32,6 +33,6 @@ app.controller('appCtrl', ['$http', controladorPrincipal]);
               }
               console.log(a);
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
-            });  
+            });
         }    
     }

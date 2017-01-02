@@ -63,8 +63,50 @@ app.controller('totalCategorias', function($scope, $http) {
   });
 })
 
+
+app.controller('delCtrl',function($scope, $http){
+  var vm = this;
+  var urlQuery=window.location.search;
+  urlQuery = urlQuery.substring(1);
+  var urlQuery2=urlQuery.split("%20");
+  console.log(urlQuery2);
+  var dato1 = urlQuery2[0].split("=");
+  var dato2 = urlQuery2[1].split("=");
+  var id = parseInt(dato1[1]);
+  var nombre = dato2[1];
+  vm.fdatos={};
+  vm.fdatos.id=id;
+  vm.fdatos.nombre=nombre;
+
+  $("#mensaje").append("<strong>id:   "+id+" <br />producto: "+nombre+"</strong>");
+  vm.cancelar=function(){
+      location.href='categorias.html';
+  }
+
+  vm.eliminar=function(){
+    console.log(id + nombre);
+    $http.post("../php/eliminar.php", vm.fdatos)
+            .success(function(res){
+              var a = res.substring(0);
+              if (a == 'eliminado') {
+                alert('Se ha eliminado correctamente');
+                location.href='categorias.html';
+                //location.reload(true);
+                
+              }else{
+                alert('Ocurrio un error al eliminar.!!');
+                location.href="categorias.html";
+              }
+              console.log(a);
+              //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
+            });
+  }
+})
+
+
 app.controller('appCtrl', function($scope, $http) {
   var vm = this;
+
   vm.fdatos = {};
   var valores;
 
@@ -79,13 +121,14 @@ app.controller('appCtrl', function($scope, $http) {
 
   $http.get("../php/modifGet.php",{params:dato})
   .then(function(response) {
-      console.log(response);
+      //console.log(response);
       $scope.articulo = response.data;
       var name = response.data[0];
       //$(document).ready(function(){
       $("#nombre").val(name.nombre);
       $('#precio').val(name.precio);
       $('#fecha_compra').val(name.fecha_compra);
+      console.log(name.fecha_compra);
       $('#vencimiento').val(name.fecha_vencimiento);
       $('#tipo').val(name.tipo);
       $('#categoria').val(name.categoria);
@@ -93,16 +136,22 @@ app.controller('appCtrl', function($scope, $http) {
       $('#estado').val(name.estado);
       $('#ubicacion').val(name.ubicacion);
       });
+
+
+    //console.log(vm);
+
   })
   //console.log(vm);
+
   vm.modificar = function(){
+          console.log($("#nombre").val());
           vm.fdatos.nombre=$("#nombre").val();
           vm.fdatos.precio=$("#precio").val();
-          vm.fdatos.fecha_compra=$("#fecha_compra").val();
-          vm.fdatos.vencimiento=$("#vencimiento").val();
+          vm.fdatos.fecha_compra=new Date($("#fecha_compra").val());
+          vm.fdatos.vencimiento=new Date($("#vencimiento").val());
           vm.fdatos.tipo=$("#tipo").val();
           vm.fdatos.categoria=$("#categoria").val();
-          vm.fdatos.profundidad=$("#profundidad").val();
+          vm.fdatos.profundidad=parseInt($("#profundidad").val());
           vm.fdatos.estado=$("#estado").val();
           vm.fdatos.ubicacion=$("#ubicacion").val();
           console.log(vm.fdatos);
@@ -112,15 +161,23 @@ app.controller('appCtrl', function($scope, $http) {
 
               if (a == 'modificado') {
                 alert('Se ha modificado correctamente');
-                location.reload(true);
+                console.log(location);
+                location.href='categorias.html';
+                //location.reload(true);
                 
               }else{
                 alert('Ocurrio un error al modificar.!!');
+                location.href="categorias.html";
               }
               console.log(a);
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
             });  
+
+  }
+});
+
         };
+
 
 
 
