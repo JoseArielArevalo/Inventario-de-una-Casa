@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ng-invalid.ng-dirty{
+            border-color:red;
+        }
+        .ng-valid.ng-dirty{
+            border-color:forestgreen;
+        }
+    </style>
+
+</head>
+<body>
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+<script src="../lib/angular-1.5.9/angular.min.js"></script>
+<script src="../lib/angular-1.5.9/angular-route.js"></script>
+<div ng-app="myApp" ng-controller="cntrl">
+
+    <form name="form1">
+        <h1>Ingrese carnet del Usiario a modificar</h1>
+        <div class="container">
+            <label for="cim">Carnet de Identidad:</label>
+            <input type="number" id="cim" ng-model="ci" name="ci"  class="form-control" required>
+        </div>
+    </form>
+
+
+    <h1>Modificar Datos</h1>
+    <form name="form" >
+        <div class="container" >
+            <label for="ci">Carnet de Identidad:</label>
+            <input type="number" id="ci" ng-model="id" name="id" ng-disabled="obj.idisable" class="form-control" required>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" ng-model="name" name="name" class="form-control" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" ng-model="password" name="password" class="form-control" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" ng-model="apellido" name="apellido" class="form-control" required>
+
+            <label for="fechan">Fecha Nacimiento:</label>
+            <input type="date" id="fechan" ng-model="fecha" name="fecha" class="form-control" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" ng-model="email" name="email" class="form-control" required><br>
+            <button type="submit" ng-click="insertdata()" value="{{btnName}}" ng-disabled="form.$invalid && form1.$invalid" class="btn btn-primary">Actualizar</button>
+            {{msg}}
+        </div>
+    </form>
+</div>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('cntrl', function($scope,$http){
+        $scope.obj={'idisable':false};
+        $scope.btnName="registrar";
+
+        $scope.insertdata=function(){
+            $http.post("../php/actualizar_usuario.php",{'ci':$scope.ci,'id':$scope.id, 'name':$scope.name, 'apellido':$scope.apellido, 'password':$scope.password, 'fecha':$scope.fecha, 'email':$scope.email, 'btnName':$scope.btnName})
+                .success(function(){
+                    $scope.msg="Actualizado";
+                })
+        }
+    });
+</script>
+</body>
+</html>
