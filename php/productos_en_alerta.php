@@ -7,7 +7,6 @@ $consulta = "SELECT nombre,precio,tipo,fecha_vencimiento FROM productos";
 function dias_transcurridos($fecha_i,$fecha_f)
 {
   $dias = (strtotime($fecha_i)-strtotime($fecha_f))/86400;
-  $dias   = abs($dias); 
   $dias = floor($dias);   
   return $dias;
 }
@@ -43,7 +42,7 @@ function devolverArraySQL($consulta){
    while($row=$resultado->fetch_assoc()){
 
        if (dias_transcurridos($row['fecha_vencimiento'] ,$fecha)>=1 && 
-        dias_transcurridos($row['fecha_vencimiento'] ,$fecha)<=3) {
+        dias_transcurridos($row['fecha_vencimiento'] ,$fecha)<=5) {
            $datos[$i] = $row;
            $i++;        
        }
