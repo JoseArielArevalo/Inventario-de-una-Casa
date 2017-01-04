@@ -31,4 +31,6 @@ function validarUsuario()
     }
 }
 
+validarUsuario();
+
 ?>
