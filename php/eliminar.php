@@ -1,18 +1,20 @@
 <?php 
 	$objDatos = json_decode(file_get_contents("php://input"));
 
+    session_start();
 	$id = $objDatos->id;
 	$nombre=$objDatos->nombre;
-	$usuario="admin";
+	$fecha=date ("Y/n/j"); 
+	$usuario=$_SESSION['usuario'];
 	include "conexion.php";
 
 	if ($id && $nombre) {
 		$insertar=mysql_query("insert into eliminados values(null,
 					'".$id."',
 					'".$nombre."',
-					'".$usuario."')",$conexion);
+					'".$usuario."',
+					'".$fecha."')",$conexion);
 		$actualizar=mysql_query("delete from productos where id=".$id);
-		
 
 		/*$actualizar=mysql_query("update productos set
 					nombre='".$nombre."',
