@@ -41,13 +41,11 @@ function devolverProductosEnAlerta($consulta)
     $i     = 0;
 
     while ($row = $resultado->fetch_assoc()) {
-
         if (diasTranscurridos($row['fecha_vencimiento'], $fecha) >= 1 &&
             diasTranscurridos($row['fecha_vencimiento'], $fecha) <= 5) {
             $datos[$i] = $row;
             $i++;
         }
-
     }
     mysqli_close($conexion);
     return $datos;
