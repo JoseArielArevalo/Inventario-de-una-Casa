@@ -41,6 +41,16 @@ app.controller('productosVencidos', function($scope, $http) {
   });
 })
 
+app.controller('historial', function($scope, $http) {
+  $http.get("../php/historial.php")
+  .then(function(response) {
+      $scope.categoria = response.data;
+      var tamano = $scope.categoria.length;
+      console.log(tamano);
+      $scope.cantidad=tamano;      
+  });
+})
+
 app.controller('totalCategorias', function($scope, $http) {
   $http.get("../php/capital/total.php")
   .then(function(response) {
@@ -59,7 +69,13 @@ app.controller('totalCategorias', function($scope, $http) {
       $scope.recamara = categorias[1];
       $scope.cocina = categorias[2];
       $scope.bano = categorias[3];
+
+      $scope.tamanioSala = categorias[4];
+      $scope.tamanioRecamara = categorias[5];
+      $scope.tamanioCocina = categorias[6];
+      $scope.tamanioBanio = categorias[7];
       $scope.cantidad=tamano;      
+      $scope.porcentaje='%';
   });
 })
 

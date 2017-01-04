@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html  ng-app="misCategorias">
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">      
+<script src="../lib/angular-1.5.9/angular.min.js"></script>
+<script src="../lib/angular-1.5.9/angular-route.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+<head>
+<div ng-include src=" 'menu.html' "> </div>
+</head>
+
+<body>
+<div class="container">
+<div class="col-md-12">  
+<h3>Productos Eliminados</h3>
+<div ng-controller="capital">
+<h4 align="right">Fecha : {{dia}}/{{mes}}/{{anio}}</h4>
+</div>
+<div ng-controller="historial"> 
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre de Producto</th>
+        <th>Nombre de Usuario</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+     
+    <tbody ng-repeat="eliminados in categoria | orderBy:'-fecha_vencimiento'">
+      <tr>
+        <td> {{eliminados.nombre_producto}} </td>
+         
+        <td> {{eliminados.nombre_usuario}} </td>
+  
+        <td> {{eliminados.fecha}} </td>
+      </tr>
+    </tbody>
+  </table> 
+
+  <h4>Cantidad de productos: {{cantidad+0}}</h4>      
+</div>
+</div>
+</div>
+</body>
+</html>

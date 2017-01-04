@@ -5,22 +5,22 @@
  */
 
 /**
- * @global string consulta para obtener toda la informacion del los productos
- */
-$consulta = "SELECT id,nombre,precio,categoria,estado,profundidad,fecha_compra FROM productos";
+ * @global string consulta acerca de los datos de los productos que fueron eliminados.
+ */ 
+$consulta = "SELECT id,id_producto,nombre_producto,nombre_usuario,fecha FROM eliminados";
 
 /**
- * Devuelve toda la informacion de cada producto.
+ * Devuelve un array con la informacion de los productos que fueron eliminados.
  * @param string $consulta
  * @return array
  */
-function devolverDatosDelProducto($consulta)
+function devolverProductosEliminados($consulta)
 {
 
     $conexion = mysqli_connect("localhost", "root", "", "inventariocasa");
 
     if (!$resultado = mysqli_query($conexion, $consulta)) {
-        die();
+        die('error en la conexion');
     }
 
     $datos = array();
@@ -35,9 +35,9 @@ function devolverDatosDelProducto($consulta)
 }
 
 /**
- * Convierte un array de datos en un archivo de lectura de tipo JSON.
+ * Convierte el array de datos en un archivo de lectura JSON.
  */ 
-$miArray = devolverDatosDelProducto($consulta);
+$miArray = devolverProductosEliminados($consulta);
 echo json_encode($miArray);
 
 ?>

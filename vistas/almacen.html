@@ -24,7 +24,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Capital total</th>
+        <th>Capital total [ Bs ]</th>
         <th>Cantidad total de Productos</th>
         <th>Cantidad de productos vencidos</th>
         <th>Cantidad de productos en alerta</th>
@@ -33,18 +33,18 @@
     <tbody>
     <tr>
       <th>
-        <div ng-repeat="articulo in categoria">
+        <div ng-repeat="articulo in categoria" align="center">
         <h3> Bs. {{articulo}}</h4>
         </div>
       </th>
-        <th><div><h3>{{total+0}}</h3></div></th>
+        <th><div align="center"><h3>{{total+0}}</h3></div></th>
       <th>
-        <div ng-controller="productosVencidos">
+        <div ng-controller="productosVencidos" align="center">
         <h3>{{cantidad+0}}</h3>
         </div>
       </th> 
       <th>
-        <div ng-controller="misAlertas">
+        <div ng-controller="misAlertas" align="center">
         <h3>{{cantidad+0}}</h3>
         </div>
       </th> 
@@ -59,25 +59,30 @@
     <thead>
       <tr>
         <th>Categoria</th>
-        <th>Total</th>
+        <th>Total [ Bs ]</th>
+        <th>Porcentaje [ % ]</th>
       </tr>
     </thead>
     <tbody>
     <tr>
       <th><h4>{{categoria1}}</h4></th>
       <th><h4>{{sala | currency : 'Bs. '}}</h4></th>
+      <th><h4>{{(tamanioSala/total)*100  | number:2 }} {{porcentaje}}</h4></th>
     </tr>
     <tr>
       <th><h4>{{categoria2}}</h4></th>
       <th><h4>{{recamara | currency : 'Bs. '}}</h4></th>
+      <th><h4>{{(tamanioRecamara/total)*100  | number:2 }} {{porcentaje}}</h4></th>
     </tr>
     <tr>
       <th><h4>{{categoria3}}</h4></th>
       <th><h4>{{cocina | currency : 'Bs. '}}</h4></th>
+      <th><h4>{{(tamanioCocina/total)*100  | number:2 }} {{porcentaje}}</h4></th>
     </tr>
     <tr>
       <th><h4>{{categoria4}}</h4></th>
       <th><h4>{{bano | currency : 'Bs. '}}</h4></th>
+      <th><h4>{{(tamanioBanio/total)*100 | number:2 }} {{porcentaje}}</h4></th>
     </tr>
   </tbody>
   </table>
