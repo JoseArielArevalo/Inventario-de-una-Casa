@@ -61,5 +61,3 @@ function devolverProductosEnAlerta($consulta)
  */
 $miArray = devolverProductosEnAlerta($consulta);
 echo json_encode($miArray);
-
-?>
