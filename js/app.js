@@ -205,7 +205,3 @@ app.controller('appCtrl', function($scope, $http) {
   }
 });
 
-
-
-
-
