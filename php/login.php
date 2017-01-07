@@ -6,7 +6,6 @@
 
 /**
  * Valida si los datos del login ingresados por el usuario existen.
- * @return void
  */
 function validarUsuario()
 {

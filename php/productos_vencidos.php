@@ -35,7 +35,7 @@ function devolverProductosVencidos($consulta)
 
     $fecha = date("j-n-Y");
 
-    if (!$resultado = mysqli_query($conexion, $consulta)) {
+                          if (!$resultado = mysqli_query($conexion, $consulta)) {
         die();
     }
 

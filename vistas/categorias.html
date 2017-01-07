@@ -2,77 +2,66 @@
 <meta charset="utf-8">
 <title>InventarioCasa</title>
 <html ng-app="misCategorias">
-<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">      
-<script src="../lib/angular-1.5.9/angular.min.js"></script>
-<script src="../lib/angular-1.5.9/angular-route.js"></script>
-<script type="text/javascript" src="../js/app.js"></script>
-
-<head>
-<div ng-controller="misAlertas">
-<div ng-include src=" 'menu.html' "></div>
-</div>
-</head>
-
-<body>
-<div class="container">
-<h2>Categoria de Productos</h2>
-<div ng-controller="misArticulos"> 
-  <div class="form-group col-md-3">
-  <label>Categorias:</label> 
-        <select class="form-control" ng-model="categorias" name="selecione">
-           <option ng-model="" value="">ninguno</option>
-           <option ng-model="sala" value="sala" >sala</option> 
-           <option ng-model="cocina" value="cocina" >cocina</option>    
-           <option ng-model="bano" value="bano" >baño</option>
-           <option ng-model="recamara" value="recamara" >recamara</option>
-        </select>
-  </div><br/><br/>
-  <div class="form-group" align="right">
-  <label> Buscar : </label>
-  <input type="search" ng-model="busqueda">
-  </div>       
-<table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>Nombre</th>
-        <th>Categoria</th>
-        <th>Precio</th>
-        <th>Estado</th>
-        <th>Nivel de Profundidad</th>
-        <th>Fecha de Compra</th>
-        <th>Ubicacion</th>
-        <th>Edit</th>
-        <th>Del</th>
-      </tr>
-    </thead>
-    <tbody ng-repeat="articulo in categoria | filter: categorias | filter: busqueda">
-      <tr>
-        <td> {{articulo.id}} </td>
-        <td> {{articulo.nombre}} </td>
-
-        <td> {{articulo.categoria}} </td>
-  
-        <td> {{articulo.precio | currency: ' Bs. '}} </td>
-
-        <td> {{articulo.estado}}</td>
-
-        <td> {{articulo.profundidad}} </td>
-    
-        <td> {{articulo.fecha_compra | date: 'dd-MM-yyyy'}} </td>
-        <td align="center"> <a id="ubicacion" href="ubicacion.html?id={{articulo.id}}"><img src="../imagenes/ubicacion.png" alt="ubicacion" height="25px" width="28px"></a></td></td>
-        <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
-        <td> <a id="elim" href="eliminar.html?id={{articulo.id}} nombre={{articulo.nombre}}" class="btn btn-danger btn-sm">Eliminar</a></td>
-      </tr>
-    </tbody>
-  </table>
- 
-  <div>
-  <h1>{{cantidad}}</h1>
-  </div>
-
-
-</div>
-</div>
-</body>
+  <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+  <script src="../lib/angular-1.5.9/angular.min.js"></script>
+  <script src="../lib/angular-1.5.9/angular-route.js"></script>
+  <script type="text/javascript" src="../js/app.js"></script>
+  <head>
+    <div ng-controller="misAlertas">
+      <div ng-include src=" 'menu.html' "></div>
+    </div>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Categoria de Productos</h2>
+      <div ng-controller="misArticulos">
+        <div class="form-group col-md-3">
+          <label>Categorias:</label>
+          <select class="form-control" ng-model="categorias" name="selecione">
+            <option ng-model="" value="">ninguno</option>
+            <option ng-model="sala" value="sala" >sala</option>
+            <option ng-model="cocina" value="cocina" >cocina</option>
+            <option ng-model="bano" value="bano" >baño</option>
+            <option ng-model="recamara" value="recamara" >recamara</option>
+          </select>
+        </div><br/><br/>
+        <div class="form-group" align="right">
+          <label> Buscar : </label>
+          <input type="search" ng-model="busqueda">
+        </div>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+              <th>Estado</th>
+              <th>Fecha de Compra</th>
+              <th>Ubicacion</th>
+              <th>Edit</th>
+              <th>Del</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="articulo in categoria | filter: categorias | filter: busqueda">
+            <tr>
+              <td> {{articulo.id}} </td>
+              <td> {{articulo.nombre}} </td>
+              <td> {{articulo.categoria}} </td>
+              <td> {{articulo.precio | currency: ' Bs. '}} </td>
+              <td> {{articulo.estado}}</td>
+              <td> {{articulo.fecha_compra | date: 'dd/MM/yyyy'}} </td>
+              <td align="center"> <a id="ubicacion" href="ubicacion.html?id={{articulo.id}}"><img src="../imagenes/ubicacion.png" alt="ubicacion" height="25px" width="28px"></a></td></td>
+              <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
+              <td> <a id="elim" href="eliminar.html?id={{articulo.id}} nombre={{articulo.nombre}}" class="btn btn-danger btn-sm">Eliminar</a></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div>
+          <h1>{{cantidad}}</h1>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

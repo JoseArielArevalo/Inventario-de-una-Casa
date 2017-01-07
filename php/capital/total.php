@@ -51,15 +51,15 @@ function devolverTotalPorCategorias($consulta)
         }
     }
 
-    $datos[0] = $totalsala;
-    $datos[1] = $totalrecamara;
-    $datos[2] = $totalcocina;
-    $datos[3] = $totalbano;
+    $datos[0][0] = $totalsala;
+    $datos[0][1] = $totalrecamara;
+    $datos[0][2] = $totalcocina;
+    $datos[0][3] = $totalbano;
 
-    $datos[4] = $tamanoSala;
-    $datos[5] = $tamanoRecamara;
-    $datos[6] = $tamanoCocina;
-    $datos[7] = $tamanoBano;
+    $datos[1][0] = $tamanoSala;
+    $datos[1][1] = $tamanoRecamara;
+    $datos[1][2] = $tamanoCocina;
+    $datos[1][3] = $tamanoBano;
 
     mysqli_close($conexion);
 

@@ -48,6 +48,14 @@
 
                      <label for="email">Email:</label>
                      <input type="email" id="email" ng-model="email" name="email" class="form-control"  required><br>
+
+                     <label for="tipo">Tipo Usuario:</label>
+                     <select class="form-control"  name="tipo" id="tipo" ng-model="tipo" required>
+                         <option value="padre">Padre</option>
+                         <option value="madre">Madre</option>
+                         <option value="hijo">Hijo</option>
+                     </select><br>
+
                      <button type="submit" ng-click="insertdata()" value="{{btnName}}" ng-disabled="form.$invalid" class="btn btn-primary">Registrar</button>
                      {{msg}}
                  </div>
@@ -60,7 +68,7 @@
                  $scope.btnName="registrar";
 
                  $scope.insertdata=function(){
-                     $http.post("../php/insertar_usuario.php",{'id':$scope.id, 'name':$scope.name, 'apellido':$scope.apellido, 'password':$scope.password, 'fecha':$scope.fecha, 'email':$scope.email, 'btnName':$scope.btnName})
+                     $http.post("../php/insertar_usuario.php",{'id':$scope.id, 'name':$scope.name, 'apellido':$scope.apellido, 'password':$scope.password, 'fecha':$scope.fecha, 'email':$scope.email, 'btnName':$scope.btnName,'tipo':$scope.tipo})
                          .success(function(){
                              $scope.msg="Data Inserted";
                          })
