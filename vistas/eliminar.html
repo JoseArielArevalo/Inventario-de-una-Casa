@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
-		<script src="../lib/angular-1.5.9/angular.min.js"></script>
-		<script src="../lib/angular-1.5.9/angular-route.js"></script>
-		<script src="../js/app.js"></script>
-		<script src="../js/jquery-1.11.2.min.js"></script>
-	</head>
-	<body ng-app="misCategorias">
-		<div>
-			<div ng-include src="'menu.html'"></div>
-		</div>
-		<div class="container" ng-controller="delCtrl as vm">
-			<h2 id="mensaje"><br>Seguro que desea eliminar el producto: <br></h2>
-			<br>
-			<button class="btn btn-default" ng-click="vm.cancelar()">Cancelar</button>
-			<button class="btn btn-primary" ng-click="vm.eliminar()">Aceptar</button>
-		</div>
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+	<script src="../lib/angular-1.5.9/angular.min.js"></script>
+	<script src="../lib/angular-1.5.9/angular-route.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../js/jquery-1.11.2.min.js"></script>
+
+	<style>
+    .ng-invalid.ng-dirty{
+      border-color:red;
+    }
+    .ng-valid.ng-dirty{
+        border-color:green;
+    }
+    .A{
+    	display: inline-block;
+    	position: absolute;
+    }
+  </style>
+</head>
+<body ng-app="misCategorias">
+	<div>
+    	<div ng-include src="'menu.html'"></div>   
+  	</div>
+	<div class="container col-md-offset-2 col-md-8" ng-controller="delCtrl as vm">
+		<h2 id="mensaje"><br>Seguro que desea eliminar el producto: <br></h2>
+		<p class="text-success">Ingrese el monto que obtuvo al deshacerse del producto:<div class="col-xs-2 A">
+		<input class="form-control" id="precio" type="text" name="precio" ng-model="vm.fdatos.precio" ng-pattern="/^(\d+\.\d+)$/" required>
+		</div> Bs.</p>
+		<br>
+
+		<button class="btn btn-default" ng-click="vm.cancelar()">Cancelar</button>
+		<button class="btn btn-primary" ng-click="vm.eliminar()">Aceptar</button>
+			
+		
+	</div>
+	
+</body>
 </html>
