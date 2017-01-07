@@ -47,7 +47,15 @@ app.controller('historial', function($scope, $http) {
       $scope.categoria = response.data;
       var tamano = $scope.categoria.length;
       console.log(tamano);
-      $scope.cantidad=tamano;      
+      console.log(response.data[0].precio);
+      var sum=0;
+      response.data.forEach(function(item,index){
+        sum += parseInt(item.precio);
+      });
+      console.log(sum);
+      $scope.cantidad=tamano;
+      $scope.total_precio = sum;
+
   });
 })
 
@@ -100,14 +108,22 @@ app.controller('delCtrl',function($scope, $http){
   }
 
   vm.eliminar=function(){
+    var pr=$("#precio").val();
+    if(pr == ""){
+
+      alert('debes ingresar el monto. Si no se obtuvo un monto, debe ingresar 0.0');
+      location.reload(true);
+      return;
+    }
+    vm.fdatos.precio=pr;
     console.log(id + nombre);
+    console.log(vm.fdatos);
     $http.post("../php/eliminar.php", vm.fdatos)
             .success(function(res){
               var a = res.substring(0);
               if (a == 'eliminado') {
                 alert('Se ha eliminado correctamente');
                 location.href='categorias.html';
-                //location.reload(true);
                 
               }else{
                 alert('Ocurrio un error al eliminar.!!');
