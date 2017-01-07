@@ -47,7 +47,15 @@ app.controller('historial', function($scope, $http) {
       $scope.categoria = response.data;
       var tamano = $scope.categoria.length;
       console.log(tamano);
-      $scope.cantidad=tamano;      
+      console.log(response.data[0].precio);
+      var sum=0;
+      response.data.forEach(function(item,index){
+        sum += parseInt(item.precio);
+      });
+      console.log(sum);
+      $scope.cantidad=tamano;
+      $scope.total_precio = sum;
+
   });
 })
 
@@ -65,32 +73,20 @@ app.controller('totalCategorias', function($scope, $http) {
 
       var categorias = new Array();
       categorias=$scope.categoria;
-      $scope.sala = categorias[0][0];
-      $scope.recamara = categorias[0][1];
-      $scope.cocina = categorias[0][2];
-      $scope.bano = categorias[0][3];
+      $scope.sala = categorias[0];
+      $scope.recamara = categorias[1];
+      $scope.cocina = categorias[2];
+      $scope.bano = categorias[3];
 
-      var cantidad = new Array();
-      cantidad=$scope.categoria;
-      $scope.tamanioSala = cantidad[1][0];
-      $scope.tamanioRecamara = cantidad[1][1];
-      $scope.tamanioCocina = cantidad[1][2];
-      $scope.tamanioBanio = cantidad[1][3];
+      $scope.tamanioSala = categorias[4];
+      $scope.tamanioRecamara = categorias[5];
+      $scope.tamanioCocina = categorias[6];
+      $scope.tamanioBanio = categorias[7];
       $scope.cantidad=tamano;      
       $scope.porcentaje='%';
   });
 })
 
-app.controller('registroHabitacion', function($scope,$http){
-     $scope.obj={'idisable':false};
-     $scope.botonEnvio="registrar";
-          $scope.registrarHabitacion=function(){
-                $http.post("../php/insertar_habitacion.php",{'numeroHabitacion':$scope.numeroHabitacion, 'nombre':$scope.nombre, 'categoria':$scope.categoria, 'botonEnvio':$scope.botonEnvio})
-                     .success(function(){
-                     $scope.mensaje="!Habitacion Registrada Exitosamente!";
-         })
-    }
-})
 
 app.controller('delCtrl',function($scope, $http){
   var vm = this;
@@ -112,14 +108,22 @@ app.controller('delCtrl',function($scope, $http){
   }
 
   vm.eliminar=function(){
+    var pr=$("#precio").val();
+    if(pr == ""){
+
+      alert('debes ingresar el monto. Si no se obtuvo un monto, debe ingresar 0.0');
+      location.reload(true);
+      return;
+    }
+    vm.fdatos.precio=pr;
     console.log(id + nombre);
+    console.log(vm.fdatos);
     $http.post("../php/eliminar.php", vm.fdatos)
             .success(function(res){
               var a = res.substring(0);
               if (a == 'eliminado') {
                 alert('Se ha eliminado correctamente');
                 location.href='categorias.html';
-                //location.reload(true);
                 
               }else{
                 alert('Ocurrio un error al eliminar.!!');
@@ -200,8 +204,4 @@ app.controller('appCtrl', function($scope, $http) {
 
   }
 });
-
-
-
-
 

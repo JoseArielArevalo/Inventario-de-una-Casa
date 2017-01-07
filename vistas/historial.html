@@ -17,12 +17,13 @@
 <h4 align="right">Fecha : {{dia}}/{{mes}}/{{anio}}</h4>
 </div>
 <div ng-controller="historial"> 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>Nombre de Producto</th>
         <th>Nombre de Usuario</th>
         <th>Fecha</th>
+        <th>Precio</th>
       </tr>
     </thead>
      
@@ -33,11 +34,14 @@
         <td> {{eliminados.nombre_usuario}} </td>
   
         <td> {{eliminados.fecha}} </td>
+        <td> {{eliminados.precio}}</td>
       </tr>
     </tbody>
   </table> 
 
-  <h4>Cantidad de productos: {{cantidad+0}}</h4>      
+  <h4>Cantidad de productos:____{{cantidad+0}}</h4> 
+<br>
+  <h4>Monto Total:____{{total_precio | currency: 'Bs.'}}</h4>     
 </div>
 </div>
 </div>

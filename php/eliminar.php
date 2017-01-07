@@ -4,7 +4,8 @@
     session_start();
 	$id = $objDatos->id;
 	$nombre=$objDatos->nombre;
-	$fecha=date ("Y/n/j"); 
+	$fecha=date ("Y/n/j");
+	$precio=$objDatos->precio; 
 	$usuario=$_SESSION['usuario'];
 	include "conexion.php";
 
@@ -13,7 +14,8 @@
 					'".$id."',
 					'".$nombre."',
 					'".$usuario."',
-					'".$fecha."')",$conexion);
+					'".$fecha."',
+					'".$precio."')",$conexion);
 		$actualizar=mysql_query("delete from productos where id=".$id);
 
 		/*$actualizar=mysql_query("update productos set

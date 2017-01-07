@@ -7,7 +7,7 @@
 /**
  * @global string consulta acerca de los datos de los productos que fueron eliminados.
  */ 
-$consulta = "SELECT id,id_producto,nombre_producto,nombre_usuario,fecha FROM eliminados";
+$consulta = "SELECT id,id_producto,nombre_producto,nombre_usuario,fecha, precio FROM eliminados";
 
 /**
  * Devuelve un array con la informacion de los productos que fueron eliminados.
