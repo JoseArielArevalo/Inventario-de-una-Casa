@@ -11,9 +11,10 @@
 	$profundidad=$objDatos->profundidad;
 	$estado=$objDatos->estado;
 	$ubicacion=$objDatos->ubicacion;
+	$habitacion=$objDatos->habitacion;
 	include "conexion.php";
 
-	if ($nombre && $precio && $vencimiento && $tipo && $categoria && $profundidad && $ubicacion && $fecha_compra && $estado) {
+	if ($nombre && $precio && $vencimiento && $tipo && $categoria && $profundidad && $ubicacion && $fecha_compra && $estado && $habitacion) {
 		
 		$insertar=mysql_query("insert into productos values(null,
 					'".$nombre."',
@@ -24,7 +25,8 @@
 					'".$profundidad."',
 					'".$ubicacion."',
 					'".$fecha_compra."',
-					'".$estado."')",$conexion);
+					'".$estado."',
+					'".$habitacion."')",$conexion);
 		if ($insertar) {
 					echo "registrado";
 		}else{

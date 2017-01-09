@@ -161,10 +161,19 @@ app.controller('appCtrl', function($scope, $http) {
   vm.fdatos.id=dato;
   
   var dato={id:dato};
-  
+  $http.get("../php/history.php")
+    .then(function(response) {
+        var datos = response.data;
+        for (var i = 0; i < datos.length; i++) {
+          $("#habitacion").append('<option value="'+datos[i].nombre+'">'+datos[i].nombre+'</option>');
+        }
+              
+
+  });
 
   $http.get("../php/modifGet.php",{params:dato})
   .then(function(response) {
+
       //console.log(response);
       $scope.articulo = response.data;
       var name = response.data[0];
@@ -172,12 +181,13 @@ app.controller('appCtrl', function($scope, $http) {
       $("#nombre").val(name.nombre);
       $('#precio').val(name.precio);
       $('#fecha_compra').val(name.fecha_compra);
-      console.log(name.fecha_compra);
       $('#vencimiento').val(name.fecha_vencimiento);
       $('#tipo').val(name.tipo);
       $('#categoria').val(name.categoria);
       $('#profundidad').val(name.profundidad);
       $('#estado').val(name.estado);
+      $('#habitacion').delay(500).val(name.habitacion);
+      console.log(name.habitacion);
       $('#ubicacion').val(name.ubicacion);
       });
 

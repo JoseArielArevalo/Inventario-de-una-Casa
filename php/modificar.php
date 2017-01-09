@@ -11,6 +11,7 @@
 	$profundidad=$objDatos->profundidad;
 	$estado=$objDatos->estado;
 	$ubicacion=$objDatos->ubicacion;
+	$habitacion=$objDatos->habitacion;
 	include "conexion.php";
 
 	if ($id && $nombre && $precio && $vencimiento && $tipo && $categoria && $profundidad && $ubicacion && $fecha_compra && $estado) {
@@ -23,7 +24,8 @@
 					profundidad='".$profundidad."',
 					ubicacion='".$ubicacion."',
 					fecha_compra='".$fecha_compra."',
-					estado='".$estado."' where id=".$id);
+					estado='".$estado."',
+					habitacion='".$habitacion."' where id=".$id);
 		/*$actualizar=mysql_query("update productos set
 					nombre='".$nombre."',
 					precio='".$precio."',

@@ -13,7 +13,16 @@ app.controller('appCtrl', ['$http', controladorPrincipal]);
  	
  	function controladorPrincipal($http){
         var vm=this;
+        $http.get("../php/history.php")
+          .then(function(response) {
+              var datos = response.data;
+              for (var i = 0; i < datos.length; i++) {
+                console.log(datos[i].nombre);
+                $("#habitacion").append('<option value="'+datos[i].nombre+'">'+datos[i].nombre+'</option>');
+              }
+              
 
+          });
         //inicializo un objeto en los datos de formulario
         vm.fdatos = {};
         
@@ -34,5 +43,12 @@ app.controller('appCtrl', ['$http', controladorPrincipal]);
               console.log(a);
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
             });
+        }
+        vm.historial=function(){
+          $http.get("../php/history.php")
+          .then(function(response) {
+              var datos = response.data;
+              console.log(datos);
+          });
         }    
     }
