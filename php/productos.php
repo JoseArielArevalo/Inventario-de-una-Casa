@@ -7,7 +7,7 @@
 /**
  * @global string consulta para obtener toda la informacion del los productos
  */
-$consulta = "SELECT id,nombre,precio,categoria,estado,profundidad,fecha_compra FROM productos";
+$consulta = "SELECT id,nombre,precio,categoria,estado,profundidad,fecha_compra,habitacion FROM productos";
 
 /**
  * Devuelve toda la informacion de cada producto.

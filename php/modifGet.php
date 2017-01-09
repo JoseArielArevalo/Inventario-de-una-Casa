@@ -1,8 +1,10 @@
 <?php
-/*header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Content-Type: application/json; charset="UTF-8"');
-*/
+
+
+/**
+ * @author Ariel R.G.
+ */ 
+
 $id=$_GET['id'];
 $consulta = "SELECT * FROM productos WHERE id=".$id;
 

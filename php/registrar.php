@@ -1,4 +1,9 @@
 	<?php 
+
+/**
+ * @author Ariel R.G.
+ */ 
+
 	$objDatos = json_decode(file_get_contents("php://input"));
 
 

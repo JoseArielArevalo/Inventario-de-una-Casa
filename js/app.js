@@ -1,3 +1,7 @@
+/**
+ * creamos nuestro modulo el cual se cargara en nuestro html.
+ */
+
 var app = angular.module('misCategorias', []);
 app.controller('misArticulos', function($scope, $http) {
   $http.get("../php/productos.php")
@@ -9,6 +13,9 @@ app.controller('misArticulos', function($scope, $http) {
   });
 })
 
+/**
+ * devuelve los productos con fechas de vencimineto en alerta.
+ */
 app.controller('misAlertas', function($scope, $http) {
   $http.get("../php/productos_en_alerta.php")
   .then(function(response) {
@@ -19,6 +26,9 @@ app.controller('misAlertas', function($scope, $http) {
   });
 })
 
+/**
+ * devuelve la capital totoal de todos los productos.
+ */
 app.controller('capital', function($scope, $http) {
   $http.get("../php/capital/capital.php")
   .then(function(response) {
@@ -31,6 +41,9 @@ app.controller('capital', function($scope, $http) {
   });
 })
 
+/**
+ * devuelve todos los productos vencidos.
+ */
 app.controller('productosVencidos', function($scope, $http) {
   $http.get("../php/productos_vencidos.php")
   .then(function(response) {
@@ -41,6 +54,9 @@ app.controller('productosVencidos', function($scope, $http) {
   });
 })
 
+/**
+ * devulve el historial de los productos que fueron eliminados.
+ */
 app.controller('historial', function($scope, $http) {
   $http.get("../php/historial.php")
   .then(function(response) {
@@ -59,6 +75,9 @@ app.controller('historial', function($scope, $http) {
   });
 })
 
+/**
+ * devuelve el total de productos por categoria.
+ */
 app.controller('totalCategorias', function($scope, $http) {
   $http.get("../php/capital/total.php")
   .then(function(response) {
@@ -89,6 +108,9 @@ app.controller('totalCategorias', function($scope, $http) {
   });
 })
 
+/**
+ * registra la informacion de la habitacion
+ */
 app.controller('registroHabitacion', function($scope,$http){
      $scope.obj={'idisable':false};
      $scope.botonEnvio="registrar";

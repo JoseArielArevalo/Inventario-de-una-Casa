@@ -1,4 +1,9 @@
 <?php 
+
+/**
+ * @author Ariel R.G.
+ */ 
+
 	include "conexion.php";
 	$consulta = "select nombre from habitacion";
 	if (!$resultado = mysql_query($consulta)) {

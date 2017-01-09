@@ -37,6 +37,7 @@
               <th>Categoria</th>
               <th>Precio</th>
               <th>Estado</th>
+              <th>Habitacion</th>
               <th>Fecha de Compra</th>
               <th>Ubicacion</th>
               <th>Edit</th>
@@ -50,6 +51,7 @@
               <td> {{articulo.categoria}} </td>
               <td> {{articulo.precio | currency: ' Bs. '}} </td>
               <td> {{articulo.estado}}</td>
+              <td> {{articulo.habitacion}}</td>
               <td> {{articulo.fecha_compra | date: 'dd/MM/yyyy'}} </td>
               <td align="center"> <a id="ubicacion" href="ubicacion.html?id={{articulo.id}}"><img src="../imagenes/ubicacion.png" alt="ubicacion" height="25px" width="28px"></a></td></td>
               <td> <a id="edit" href="modificar.html?id={{articulo.id}}"><img src="../imagenes/editar4.png" alt="modificar" height="12px"></a></td>
