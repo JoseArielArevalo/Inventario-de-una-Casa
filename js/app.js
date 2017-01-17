@@ -187,32 +187,36 @@ app.controller('appCtrl', function($scope, $http) {
     .then(function(response) {
         var datos = response.data;
         for (var i = 0; i < datos.length; i++) {
+        //var hab = document.getElementById("habitacion");
+         // hab.innerHTML = '<option value="'+datos[i].nombre+'">'+datos[i].nombre+'</option>';
           $("#habitacion").append('<option value="'+datos[i].nombre+'">'+datos[i].nombre+'</option>');
         }
-              
-
+        cargar();
   });
 
-  $http.get("../php/modifGet.php",{params:dato})
-  .then(function(response) {
+  
 
-      //console.log(response);
-      $scope.articulo = response.data;
-      var name = response.data[0];
-      //$(document).ready(function(){
-      $("#nombre").val(name.nombre);
-      $('#precio').val(name.precio);
-      $('#fecha_compra').val(name.fecha_compra);
-      $('#vencimiento').val(name.fecha_vencimiento);
-      $('#tipo').val(name.tipo);
-      $('#categoria').val(name.categoria);
-      $('#profundidad').val(name.profundidad);
-      $('#estado').val(name.estado);
-      $('#habitacion').delay(500).val(name.habitacion);
-      console.log(name.habitacion);
-      $('#ubicacion').val(name.ubicacion);
-      });
+  
+   var cargar = function(){
+    $http.get("../php/modifGet.php",{params:dato})
+        .then(function(response) {
 
+        //console.log(response);
+        $scope.articulo = response.data;
+        var name = response.data[0];
+        //$(document).ready(function(){
+        $("#nombre").delay(10).val(name.nombre);
+        $('#precio').delay(10).val(name.precio);
+        $('#fecha_compra').delay(10).val(name.fecha_compra);
+        $('#vencimiento').delay(10).val(name.fecha_vencimiento);
+        $('#tipo').delay(10).val(name.tipo);
+        $('#categoria').delay(10).val(name.categoria);
+        $('#profundidad').delay(10).val(name.profundidad);
+        $('#estado').delay(10).val(name.estado);
+        $('#habitacion').delay(10).val(name.habitacion);
+        $('#ubicacion').val(name.ubicacion);
+        });
+  }
 
     //console.log(vm);
 
@@ -248,4 +252,3 @@ app.controller('appCtrl', function($scope, $http) {
 
   }
 });
-
