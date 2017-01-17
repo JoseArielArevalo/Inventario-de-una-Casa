@@ -57,7 +57,7 @@
                      </select><br>
 
                      <button type="submit" ng-click="insertdata()" value="{{btnName}}" ng-disabled="form.$invalid" class="btn btn-primary">Registrar</button>
-                     {{msg}}
+
                  </div>
              </form>
          </div>
@@ -70,7 +70,8 @@
                  $scope.insertdata=function(){
                      $http.post("../php/insertar_usuario.php",{'id':$scope.id, 'name':$scope.name, 'apellido':$scope.apellido, 'password':$scope.password, 'fecha':$scope.fecha, 'email':$scope.email, 'btnName':$scope.btnName,'tipo':$scope.tipo})
                          .success(function(){
-                             $scope.msg="Data Inserted";
+                             alert('se registro correctamente');
+                             location.replace("../index.html");
                          })
                  }
              });
